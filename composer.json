@@ -1,0 +1,21 @@
+{
+    "name": "lobster/triggers",
+    "description": "A trigger is a process that is triggered every time any (at this stage, not any) entity changes. That is, it is updated, created, or deleted. But it can also be launched by timer",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "lobster\\triggers\\": "src/",
+            "lobster\\triggers\\unterfaces\\": "src/interfaces/",
+            "lobster\\triggers\\images": "src/images/",
+            "lobster\\triggers\\lib\\frameworks\\yii": "src/lib/frameworks/yii/",
+            "lobster\\triggers\\lib\\frameworks\\laravel": "src/lib/frameworks/laravel/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shanja-glinka",
+            "email": "rul3iofu1s7@outlook.com"
+        }
+    ],
+    "require": {}
+}

@@ -8,6 +8,6 @@ class Controller implements ControllerInterface
 {
     public function _run()
     {
-        var_dump('lobster\triggers\lib\frameworks\yii');
+        // var_dump('lobster\triggers\lib\frameworks\yii');
     }
 }

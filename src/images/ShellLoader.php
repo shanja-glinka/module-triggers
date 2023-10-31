@@ -64,7 +64,6 @@ abstract class ShellLoader
             }
         }
         $this->setShell();
-        var_dump(Factory::$config);
 
         return $this->getShell();
     }

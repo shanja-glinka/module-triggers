@@ -14,6 +14,5 @@ final class Module
 
     public function __construct()
     {
-        var_dump('imalive');
     }
 }

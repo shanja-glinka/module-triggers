@@ -2,9 +2,9 @@
 
 namespace lobster\triggers\lib\frameworks\yii;
 
-use lobster\triggers\interfaces\ControllerInterface;
+use lobster\triggers\interfaces\ModuleInterface;
 
-class Controller implements ControllerInterface
+class Model extends \yii\base\Module implements ModuleInterface
 {
     public function _run()
     {

@@ -2,15 +2,27 @@
 
 namespace lobster\triggers;
 
-use lobster\triggers\images\SomeModule;
+use Exception;
+use lobster\triggers\images\ShellLoader;
+use lobster\triggers\interfaces\ModuleInterface;
 use lobster\triggers\interfaces\ModuleWorkerInterface;
 
-class ModuleWorker implements ModuleWorkerInterface
+class ModuleWorker extends ShellLoader implements ModuleWorkerInterface
 {
 
-    public function loadFrameWorkShell(): SomeModule
+    public function loadModule(): ModuleInterface
     {
-        $someModule = new SomeModule;
-        return $someModule;
+        $this->detectShell();
+
+        if (empty($this->getShell())) {
+            throw new Exception('Неудалось определить оболочку фреймворка');
+        }
+
+        return $this->getShell();
+    }
+
+    private function detectShell(): void
+    {
+        $this->loadFrameworkShell();
     }
 }

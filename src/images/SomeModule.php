@@ -2,7 +2,9 @@
 
 namespace lobster\triggers\images;
 
+use lobster\triggers\interfaces\ModuleInterface;
 
-abstract class SomeModule
+class SomeModule implements ModuleInterface
 {
+    public $someValue = null;
 }

@@ -2,7 +2,8 @@
 
 namespace lobster\triggers\interfaces;
 
-interface ServiceInterface {
+interface ServiceInterface
+{
     /**
      * Undocumented function
      *

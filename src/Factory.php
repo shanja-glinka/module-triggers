@@ -48,6 +48,7 @@ final class Factory implements FactoryInterface
     private function detectInstance()
     {
         $moduleWorker = new ModuleWorker();
-        self::$module = $moduleWorker->loadFrameWorkShell();
+
+        self::$module = $moduleWorker->loadModule();
     }
 }

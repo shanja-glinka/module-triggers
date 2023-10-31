@@ -5,10 +5,10 @@
     "autoload": {
         "psr-4": {
             "lobster\\triggers\\": "src/",
-            "lobster\\triggers\\unterfaces\\": "src/interfaces/",
-            "lobster\\triggers\\images": "src/images/",
-            "lobster\\triggers\\lib\\frameworks\\yii": "src/lib/frameworks/yii/",
-            "lobster\\triggers\\lib\\frameworks\\laravel": "src/lib/frameworks/laravel/"
+            "lobster\\triggers\\interfaces\\": "src/interfaces/",
+            "lobster\\triggers\\images\\": "src/images/",
+            "lobster\\triggers\\lib\\frameworks\\yii\\": "src/lib/frameworks/yii/",
+            "lobster\\triggers\\lib\\frameworks\\laravel\\": "src/lib/frameworks/laravel/"
         }
     },
     "authors": [

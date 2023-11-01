@@ -5,13 +5,13 @@
     "autoload": {
         "psr-4": {
             "lobster\\triggers\\": "src/",
-            "lobster\\triggers\\lib\\": "src/lib/",
-            "lobster\\triggers\\images\\": "src/images/",
-            "lobster\\triggers\\services\\": "src/services/",
-            "lobster\\triggers\\interfaces\\": "src/interfaces/",
-            "lobster\\triggers\\controllers\\": "src/controllers/",
-            "lobster\\triggers\\lib\\frameworks\\yii\\": "src/lib/frameworks/yii/",
-            "lobster\\triggers\\lib\\frameworks\\laravel\\": "src/lib/frameworks/laravel/"
+            // "lobster\\triggers\\lib\\": "src/lib/",
+            // "lobster\\triggers\\images\\": "src/images/",
+            // "lobster\\triggers\\services\\": "src/services/",
+            // "lobster\\triggers\\interfaces\\": "src/interfaces/",
+            // "lobster\\triggers\\controllers\\": "src/controllers/",
+            // "lobster\\triggers\\lib\\frameworks\\yii\\": "src/lib/frameworks/yii/",
+            // "lobster\\triggers\\lib\\frameworks\\laravel\\": "src/lib/frameworks/laravel/"
         }
     },
     "authors": [

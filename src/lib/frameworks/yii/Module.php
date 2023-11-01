@@ -1,12 +1,12 @@
 <?
 
-namespace lobster\triggers\lib\frameworks\yii;
+namespace triggers\lib\frameworks\yii;
 
 use DirectoryIterator;
-use lobster\triggers\Factory;
+use triggers\Factory;
 use Yii;
 
-use lobster\triggers\interfaces\ModuleInterface;
+use triggers\interfaces\ModuleInterface;
 
 class Module extends \yii\base\Module implements ModuleInterface
 {

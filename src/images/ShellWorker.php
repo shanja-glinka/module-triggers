@@ -1,8 +1,8 @@
 <?
 
-namespace lobster\triggers\images;
+namespace triggers\images;
 
-use lobster\triggers\interfaces\ShellWorkerInterface;
+use triggers\interfaces\ShellWorkerInterface;
 
 abstract class ShellWorker implements ShellWorkerInterface
 {

@@ -1,6 +1,6 @@
 <?
 
-namespace lobster\triggers\images;
+namespace triggers\images;
 
 use Exception;
 

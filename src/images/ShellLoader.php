@@ -1,11 +1,11 @@
 <?
 
-namespace lobster\triggers\images;
+namespace triggers\images;
 
 use Exception;
-use lobster\triggers\Factory;
-use lobster\triggers\interfaces\ModuleInterface;
-use lobster\triggers\SomeModule;
+use triggers\Factory;
+use triggers\interfaces\ModuleInterface;
+use triggers\SomeModule;
 
 abstract class ShellLoader
 {

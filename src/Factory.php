@@ -2,10 +2,10 @@
 
 namespace lobster\triggers;
 
-use lobster\triggers\SomeModule;
-use lobster\triggers\interfaces\ControllerInterface;
-use lobster\triggers\interfaces\FactoryInterface;
-use lobster\triggers\lib\ModuleWorker;
+use triggers\SomeModule;
+use triggers\interfaces\ControllerInterface;
+use triggers\interfaces\FactoryInterface;
+use triggers\lib\ModuleWorker;
 
 final class Factory implements FactoryInterface
 {

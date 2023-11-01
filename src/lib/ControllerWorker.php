@@ -1,6 +1,6 @@
 <?
 
-namespace lobster\triggers\lib;
+namespace triggers\lib;
 
 class ControllerWorker
 {

@@ -1,6 +1,6 @@
 <?
 
-namespace lobster\triggers\interfaces;
+namespace triggers\interfaces;
 
 interface ModuleWorkerInterface
 {

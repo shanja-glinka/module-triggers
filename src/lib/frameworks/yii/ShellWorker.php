@@ -1,8 +1,8 @@
 <?
 
-namespace lobster\triggers\lib\frameworks\yii;
+namespace triggers\lib\frameworks\yii;
 
-use lobster\triggers\images\ShellWorker as BaseInterShellWorker;
+use triggers\images\ShellWorker as BaseInterShellWorker;
 
 class ShellWorker extends BaseInterShellWorker
 {

@@ -1,11 +1,11 @@
 <?
 
-namespace lobster\triggers\lib;
+namespace triggers\lib;
 
 use Exception;
-use lobster\triggers\images\ShellLoader;
-use lobster\triggers\interfaces\ModuleInterface;
-use lobster\triggers\interfaces\ModuleWorkerInterface;
+use triggers\images\ShellLoader;
+use triggers\interfaces\ModuleInterface;
+use triggers\interfaces\ModuleWorkerInterface;
 
 class ModuleWorker extends ShellLoader implements ModuleWorkerInterface
 {

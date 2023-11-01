@@ -2,7 +2,7 @@
 
 namespace lobster\triggers;
 
-use lobster\triggers\interfaces\ModuleInterface;
+use triggers\interfaces\ModuleInterface;
 
 class SomeModule implements ModuleInterface
 {

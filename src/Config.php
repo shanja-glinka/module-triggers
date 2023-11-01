@@ -2,14 +2,14 @@
 
 namespace lobster\triggers;
 
-use lobster\triggers\controllers\ActionsController;
-use lobster\triggers\controllers\DirectoriesController;
-use lobster\triggers\controllers\EntityController;
-use lobster\triggers\controllers\RulesController;
-use lobster\triggers\images\BaseController;
-use lobster\triggers\images\ShellWorker;
-use lobster\triggers\lib\frameworks\yii\ShellWorker as ShellWorkerYii;
-use lobster\triggers\lib\frameworks\laravel\ShellWorker as ShellWorkerLaravel;
+use triggers\controllers\ActionsController;
+use triggers\controllers\DirectoriesController;
+use triggers\controllers\EntityController;
+use triggers\controllers\RulesController;
+use triggers\images\BaseController;
+use triggers\images\ShellWorker;
+use triggers\lib\frameworks\yii\ShellWorker as ShellWorkerYii;
+use triggers\lib\frameworks\laravel\ShellWorker as ShellWorkerLaravel;
 
 final class Config
 {

@@ -1,8 +1,8 @@
 <?
 
-namespace lobster\triggers\controllers;
+namespace triggers\controllers;
 
-use lobster\triggers\images\BaseController;
+use triggers\images\BaseController;
 
 class ActionsController extends BaseController
 {

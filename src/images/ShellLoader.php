@@ -5,6 +5,7 @@ namespace lobster\triggers\images;
 use Exception;
 use lobster\triggers\Factory;
 use lobster\triggers\interfaces\ModuleInterface;
+use lobster\triggers\SomeModule;
 
 abstract class ShellLoader
 {
@@ -33,12 +34,16 @@ abstract class ShellLoader
      * регистрации в требуемом фреймворке
      * 
      * 
-     * @param ShellWorker $someModule
+     * @param ShellWorker $someShell
      * @return self
      */
-    private function setShell(ShellWorker $someModule = null): self
+    private function setShell(ShellWorker $someShell): self
     {
-        $this->shell = new SomeModule();
+
+        $someShell->run();
+
+        $this->shell = new SomeModule;
+        var_dump($someShell);
         return $this;
     }
 
@@ -56,6 +61,7 @@ abstract class ShellLoader
         }
 
 
+        /** @var ShellWorker */
         foreach (Factory::$config::SHELL_LIST as $shellWorker) {
             $shellWorker = new $shellWorker;
             if ($shellWorker->isShellExists()) {
@@ -63,7 +69,10 @@ abstract class ShellLoader
                 break;
             }
         }
-        $this->setShell();
+
+        // for example
+        $shellWorker = Factory::$config::SHELL_LIST[0];
+        $this->setShell(new $shellWorker);
 
         return $this->getShell();
     }

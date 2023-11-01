@@ -6,7 +6,7 @@ interface ControllerInterface {
     /**
      * Undocumented function
      *
-     * @return void
+     * @return mixed
      */
     public function _run();
 }

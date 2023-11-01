@@ -2,18 +2,16 @@
 
 namespace lobster\triggers;
 
-use lobster\triggers\images\SomeModule;
+use lobster\triggers\SomeModule;
 use lobster\triggers\interfaces\ControllerInterface;
 use lobster\triggers\interfaces\FactoryInterface;
+use lobster\triggers\lib\ModuleWorker;
 
 final class Factory implements FactoryInterface
 {
 
     /** @var Config */
     public static $config;
-
-    /** @var SomeModule */
-    public static $module;
 
 
 
@@ -49,6 +47,6 @@ final class Factory implements FactoryInterface
     {
         $moduleWorker = new ModuleWorker();
 
-        self::$module = $moduleWorker->loadModule();
+        $moduleWorker->loadModule();
     }
 }

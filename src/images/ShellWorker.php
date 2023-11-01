@@ -20,6 +20,13 @@ abstract class ShellWorker implements ShellWorkerInterface
     }
 
 
+    public function run(): void
+    {
+        $this->registerControllers();
+        $this->registerEvents();
+    }
+
+
     public function getShellName(): string
     {
         return $this->shellName;
@@ -32,11 +39,15 @@ abstract class ShellWorker implements ShellWorkerInterface
 
     public function isShellExists(): bool
     {
-        return !empty($this->getShellName()) && class_exists($this->getShellName());
+        return !empty($this->getInstanceNamespace()) && class_exists($this->getInstanceNamespace());
     }
 
 
     protected abstract function setShellName();
 
     protected abstract function setInstanceNamespace();
+
+    protected abstract function registerControllers();
+
+    protected abstract function registerEvents();
 }

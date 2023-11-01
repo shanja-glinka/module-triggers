@@ -8,11 +8,19 @@ class ShellWorker extends BaseInterShellWorker
 {
     protected function setShellName()
     {
-        $this->shellName = 'Illuminate\Foundation\Application';
+        $this->shellName = 'Laravel';
     }
 
     protected function setInstanceNamespace()
     {
         $this->instanceNamespace = 'Illuminate\Foundation\Application';
+    }
+
+    protected function registerControllers()
+    {
+    }
+
+    protected function registerEvents()
+    {
     }
 }

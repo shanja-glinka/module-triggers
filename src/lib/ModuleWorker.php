@@ -1,6 +1,6 @@
 <?
 
-namespace lobster\triggers;
+namespace lobster\triggers\lib;
 
 use Exception;
 use lobster\triggers\images\ShellLoader;

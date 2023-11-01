@@ -2,9 +2,9 @@
 
 namespace lobster\triggers\lib\frameworks\laravel;
 
-use lobster\triggers\interfaces\Controller as InterfacesController;
+use lobster\triggers\interfaces\ControllerInterface;
 
-class Controller implements InterfacesController
+class Controller implements ControllerInterface
 {
     public function _run()
     {

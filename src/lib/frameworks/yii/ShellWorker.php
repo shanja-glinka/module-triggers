@@ -15,4 +15,12 @@ class ShellWorker extends BaseInterShellWorker
     {
         $this->instanceNamespace = 'Yii';
     }
+
+    protected function registerControllers()
+    {
+    }
+
+    protected function registerEvents()
+    {
+    }
 }

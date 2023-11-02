@@ -2,14 +2,14 @@
 
 namespace triggers;
 
-use triggers\controllers\ActionsController;
-use triggers\controllers\DirectoriesController;
-use triggers\controllers\EntityController;
-use triggers\controllers\RulesController;
-use triggers\images\BaseController;
 use triggers\images\ShellWorker;
 use triggers\lib\frameworks\yii\ShellWorker as ShellWorkerYii;
 use triggers\lib\frameworks\laravel\ShellWorker as ShellWorkerLaravel;
+use triggers\lib\TriggerService;
+use triggers\services\ActionsServiceController;
+use triggers\services\DirectoriesServiceController;
+use triggers\services\EntityServiceController;
+use triggers\services\RulesServiceController;
 
 final class Config
 {
@@ -24,12 +24,23 @@ final class Config
     ];
 
     /**
-     * @var BaseController[]
+     * Для реализации роутов решено использовать сервисы, в котором публичные
+     * методы являются экшенами для работы роута.
+     * Роут выглядит как {ROUTES_LIST[i]}/{ServiceService::<public_method>}
+     * 
+     * @var array
      */
     const ROUTES_LIST = [
-        'triggers/entities' => EntityController::class,
-        'triggers/directories' => DirectoriesController::class,
-        'triggers/actions' => ActionsController::class,
-        'triggers/rules' => RulesController::class
+        'triggers/entities' => EntityServiceController::class,
+        'triggers/directories' => DirectoriesServiceController::class,
+        'triggers/actions' => ActionsServiceController::class,
+        'triggers/rules' => RulesServiceController::class
+    ];
+
+    /**
+     * Список сервисов доступных к использованию вне библиотеки
+     */
+    const SERVICES_LIST = [
+        TriggerService::class
     ];
 }

@@ -2,10 +2,11 @@
 
 namespace triggers;
 
-use triggers\SomeModule;
-use triggers\interfaces\ControllerInterface;
 use triggers\interfaces\FactoryInterface;
+use triggers\lib\ControllerWorker;
 use triggers\lib\ModuleWorker;
+use triggers\lib\TriggerEventService;
+use triggers\lib\TriggerService;
 
 final class Factory implements FactoryInterface
 {
@@ -13,17 +14,17 @@ final class Factory implements FactoryInterface
     /** @var Config */
     public static $config;
 
+    /** @var ControllerWorker */
+    public static $controllers;
 
+    /** @var string */
+    public static $shellName;
 
-    /** @var ControllerInterface */
-    public static $controller;
+    /** @var object */
+    public static $models;
 
-    /** @var Services[] */
-    public static $trigger;
-
-    /** @var Services[] */
-    public static $services;
-
+    /** @var TriggerService */
+    public static $service;
 
 
     public function __construct()
@@ -31,9 +32,12 @@ final class Factory implements FactoryInterface
         $this->init();
     }
 
+
     private function init()
     {
         $this->setConfig();
+
+        $this->setMainService();
 
         $this->detectInstance();
     }
@@ -43,10 +47,20 @@ final class Factory implements FactoryInterface
         self::$config = new Config();
     }
 
+    private function setMainService()
+    {
+        self::$service = new TriggerService();
+        self::$service::$event = new TriggerEventService();
+    }
+
     private function detectInstance()
     {
-        $moduleWorker = new ModuleWorker();
+        $modeWorker = new ModuleWorker();
+        $modeWorker->loadModule();
 
-        $moduleWorker->loadModule();
+        self::$controllers = $modeWorker->getControllers();
+        self::$shellName = $modeWorker->getShellName();
+
+        self::$models = $modeWorker->getModels();
     }
 }

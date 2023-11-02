@@ -2,6 +2,8 @@
 
 namespace triggers\interfaces;
 
+use triggers\lib\ControllerWorker;
+
 interface ShellWorkerInterface
 {
     /**
@@ -18,11 +20,27 @@ interface ShellWorkerInterface
      */
     public function getShellName(): string;
 
-
     /**
      * Требуется для инициализации оболочки
      *
      * @return string
      */
     public function getInstanceNamespace(): string;
+
+    /**
+     * Функиця проверки существования оболочки фреймворка
+     *
+     * @return boolean
+     */
+    public function isShellExists(): bool;
+
+    /**
+     * @return ControllerWorker
+     */
+    public function getControllers(): ControllerWorker;
+
+    /**
+     * @return stdClass
+     */
+    public function getModels();
 }

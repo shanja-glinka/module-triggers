@@ -2,13 +2,16 @@
 
 namespace triggers\lib\frameworks\laravel;
 
-use triggers\images\ShellWorker as BaseInterShellWorker;
+use triggers\images\BaseShellWorker;
+use triggers\lib\frameworks\laravel\models\Triggers;
+use triggers\lib\frameworks\laravel\models\TriggersActions;
+use triggers\lib\frameworks\laravel\models\TriggersHistory;
 
-class ShellWorker extends BaseInterShellWorker
+class ShellWorker extends BaseShellWorker
 {
     protected function setShellName()
     {
-        $this->shellName = 'Laravel';
+        $this->shellName = 'laravel';
     }
 
     protected function setInstanceNamespace()
@@ -18,9 +21,31 @@ class ShellWorker extends BaseInterShellWorker
 
     protected function registerControllers()
     {
+        /** @var BaseRoute */
+        foreach ($this->controllers->getRoutes() as $baseRoute) {
+            // $baseRoute->getRealRoute();
+            // $baseRoute->call($bodyData, $queryData, $someRequest);
+        }
     }
 
     protected function registerEvents()
     {
+
+        \Illuminate\Support\Facades\Event::listen('eloquent.created: *', function () {
+            //
+        });
+        \Illuminate\Support\Facades\Event::listen('eloquent.saved: *', function () {
+            //
+        });
+        \Illuminate\Support\Facades\Event::listen('eloquent.deleted: *', function () {
+            //
+        });
+    }
+
+    protected function registerModels()
+    {
+        $this->triggersModel = Triggers::class;
+        $this->triggersActionsModel = TriggersActions::class;
+        $this->triggersHistoryModel = TriggersHistory::class;
     }
 }

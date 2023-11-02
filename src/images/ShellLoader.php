@@ -4,56 +4,38 @@ namespace triggers\images;
 
 use Exception;
 use triggers\Factory;
-use triggers\interfaces\ModuleInterface;
-use triggers\SomeModule;
 
 abstract class ShellLoader
 {
-    /** @var ModuleInterface */
+    /**
+     * @var BaseShellWorker 
+     * */
     private $shell;
 
 
     /**
-     * @return ModuleInterface|null
+     * @return null
      */
-    public function __invoke(): ?ModuleInterface
+    public function __invoke()
     {
         return $this->loadFrameWorkShell();
     }
 
     /**
-     * @return ModuleInterface|null
+     * @return BaseShellWorker|null
      */
-    protected function getShell(): ?ModuleInterface
+    protected function getShell(): ?BaseShellWorker
     {
         return $this->shell;
     }
 
     /**
-     * Происходит преобразование оболочки в модуль для Factory::$module
-     * регистрации в требуемом фреймворке
-     * 
-     * 
-     * @param ShellWorker $someShell
-     * @return self
-     */
-    private function setShell(ShellWorker $someShell): self
-    {
-
-        $someShell->run();
-
-        $this->shell = new SomeModule;
-        var_dump($someShell);
-        return $this;
-    }
-
-    /**
-     * Из Factory::$config::SHELL_LIST создает обьект класса ShellWorker
+     * Из Factory::$config::SHELL_LIST создает обьект класса BaseShellWorker
      * в котором проверяется возможность получения оболочки
      * 
-     * @return ModuleInterface|null
+     * @return null
      */
-    protected function loadFrameWorkShell(): ?ModuleInterface
+    protected function loadFrameWorkShell()
     {
 
         if (!isset(Factory::$config)) {
@@ -61,7 +43,7 @@ abstract class ShellLoader
         }
 
 
-        /** @var ShellWorker */
+        /** @var BaseShellWorker */
         foreach (Factory::$config::SHELL_LIST as $shellWorker) {
             $shellWorker = new $shellWorker;
             if ($shellWorker->isShellExists()) {
@@ -70,10 +52,23 @@ abstract class ShellLoader
             }
         }
 
-        // for example
-        $shellWorker = Factory::$config::SHELL_LIST[0];
-        $this->setShell(new $shellWorker);
-
         return $this->getShell();
+    }
+
+    /**
+     * Происходит преобразование оболочки в модуль для Factory::$module
+     * регистрации в требуемом фреймворке
+     * 
+     * 
+     * @param BaseShellWorker $someShell
+     * @return self
+     */
+    private function setShell(BaseShellWorker $someShell): self
+    {
+        $someShell->run();
+
+        $this->shell = $someShell;
+
+        return $this;
     }
 }

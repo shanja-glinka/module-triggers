@@ -1,6 +1,6 @@
 <?
 
-namespace lobster\triggers;
+namespace triggers;
 
 use triggers\controllers\ActionsController;
 use triggers\controllers\DirectoriesController;

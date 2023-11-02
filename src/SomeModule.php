@@ -1,6 +1,6 @@
 <?
 
-namespace lobster\triggers;
+namespace triggers;
 
 use triggers\interfaces\ModuleInterface;
 

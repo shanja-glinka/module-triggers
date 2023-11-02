@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace triggers\lib\frameworks\yii;
 

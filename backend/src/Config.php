@@ -10,6 +10,7 @@ use triggers\services\ActionsServiceController;
 use triggers\services\DirectoriesServiceController;
 use triggers\services\EntityServiceController;
 use triggers\services\RulesServiceController;
+use triggers\services\ViewServiceController;
 
 final class Config
 {
@@ -31,6 +32,7 @@ final class Config
      * @var array
      */
     const ROUTES_LIST = [
+        '' => ViewServiceController::class,
         'triggers/entities' => EntityServiceController::class,
         'triggers/directories' => DirectoriesServiceController::class,
         'triggers/actions' => ActionsServiceController::class,
@@ -43,4 +45,6 @@ final class Config
     const SERVICES_LIST = [
         TriggerService::class
     ];
+
+    const FRONTEND_VIEW_DIR = __DIR__ . '../../../frontend/dist/sakura-form/';
 }

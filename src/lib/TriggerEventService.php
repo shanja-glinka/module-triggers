@@ -8,9 +8,19 @@ use triggers\models\interfaces\TriggersInterface;
 final class TriggerEventService
 {
 
+    /**
+     * Ссылка на репозиторий
+     *  
+     * @var Repository 
+     * */
+    private $repository;
+
+
     public function __construct()
     {
+        $this->repository = Factory::$service::$repository;
     }
+
 
     public function afterInsert($someEvent)
     {
@@ -50,18 +60,18 @@ final class TriggerEventService
     /**
      * Функция поиска с последующим вызовом триггера
      *
-     * @param object $eventData
+     * @param ShellEventData $eventData
      * @param boolean $isInsert
      * @param boolean $isUpdate
      * @param boolean $isDelete
      * @return void
      */
-    private function tryToTriggerIt($eventData, bool $isInsert = false, bool $isUpdate = false, $isDelete = false)
+    private function tryToTriggerIt(ShellEventData $eventData, bool $isInsert = false, bool $isUpdate = false, $isDelete = false)
     {
         /** @var TriggersInterface */
 
-        $triggersModel = Factory::$models->triggers::findOne([
-            'entity_type' => $this->normalizeTableName($eventData->tableName),
+        $triggersModel = $this->repository->findOneTriggerBy([
+            'entity_type' => $this->repository->normalizeTableName($eventData->tableName),
             'on_insert' => $isInsert,
             'on_update' => $isUpdate,
             'on_delete' => $isDelete,
@@ -73,33 +83,27 @@ final class TriggerEventService
         }
     }
 
-
-    private function normalizeTableName(string $tableName): string
-    {
-        return str_replace('{', '', str_replace('}', '', str_replace('%', '', $tableName)));
-    }
-
     /**
      * Обработчик значения, что пришел как аргумент функции события
      *
      * @param mixed $someEvent
-     * @return \stdClass|null
+     * @return ShellEventData|null
      */
-    private function translateShellEvent($someEvent): ?\stdClass
+    private function translateShellEvent($someEvent): ?ShellEventData
     {
-        $data = new \stdClass;
+        $shellEventData = new ShellEventData;
 
-        $data->tableName = '';
-        $data->attributes = '';
+        $shellEventData->tableName = '';
+        $shellEventData->attributes = null;
 
         switch (Factory::$shellName) {
             case 'yii':
                 $sender = $someEvent->sender;
 
-                $data->tableName = $sender->tableName();
-                $data->attributes = $sender->toArray();
+                $shellEventData->tableName = $sender->tableName();
+                $shellEventData->attributes = $sender->toArray();
 
-                return $data;
+                return $shellEventData;
             case 'laravel':
                 return null;
             default:

@@ -45,7 +45,7 @@ class TriggersHistory extends \yii\db\ActiveRecord implements TriggersHistoryInt
         return $this->hasMany(Triggers::class, ['id' => 'trigger_id']);
     }
 
-    public static function isTriggerFinished(int $triggerId, bool $isSuccessful, $startedWithData = null)
+    public static function setTriggerFinished(int $triggerId, bool $isSuccessful, $startedWithData = null)
     {
         $newdata = new self;
 

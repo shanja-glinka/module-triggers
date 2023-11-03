@@ -6,11 +6,15 @@ use triggers\interfaces\TriggerServiceInterface;
 
 final class TriggerService implements TriggerServiceInterface
 {
+    /** @var Repository */
+    public static $repository;
+
     /** @var TriggerEventService */
     public static $event;
 
     public function __construct()
     {
+        $this->repository = new Repository;
     }
 
     /**

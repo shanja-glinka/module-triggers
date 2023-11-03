@@ -37,7 +37,7 @@ class TriggersActions extends \yii\db\ActiveRecord implements TriggersActionsInt
     public function triggerFinished(bool $isSuccessful, $startedWithData = null)
     {
 
-        TriggersHistory::isTriggerFinished((int) $this->trigger_id, $isSuccessful, $startedWithData);
+        TriggersHistory::setTriggerFinished((int) $this->trigger_id, $isSuccessful, $startedWithData);
 
         $trigger = $this->triggers;
         if (!$trigger) {

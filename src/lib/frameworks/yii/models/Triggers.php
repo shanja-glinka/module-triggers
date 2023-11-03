@@ -48,7 +48,7 @@ class Triggers extends \yii\db\ActiveRecord implements TriggersInterface
 
     public function beforeSave($isInsert)
     {
-        throw new Exception('Пропиши правила для создания времени обновления и удаления тьриггеров');
+        throw new Exception('Пропиши правила для создания времени обновления и удаления триггеров');
 
         return parent::beforeSave($isInsert);
     }

@@ -27,5 +27,5 @@ interface TriggersHistoryInterface
      * @param mixed $startedWithData
      * @return boolean
      */
-    public static function isTriggerFinished(int $triggerId, bool $isSuccessful, $startedWithData = null);
+    public static function setTriggerFinished(int $triggerId, bool $isSuccessful, $startedWithData = null);
 }

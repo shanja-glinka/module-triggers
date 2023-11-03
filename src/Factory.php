@@ -62,5 +62,7 @@ final class Factory implements FactoryInterface
         self::$shellName = $modeWorker->getShellName();
 
         self::$models = $modeWorker->getModels();
+
+        self::$service::$repository->initModels();
     }
 }

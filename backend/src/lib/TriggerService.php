@@ -14,7 +14,7 @@ final class TriggerService implements TriggerServiceInterface
 
     public function __construct()
     {
-        $this->repository = new Repository;
+        self::$repository = new Repository;
     }
 
     /**

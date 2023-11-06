@@ -4,7 +4,7 @@ namespace triggers\lib\frameworks\laravel;
 
 use triggers\Factory;
 use triggers\images\BaseShellWorker;
-use triggers\lib\frameworks\laravel\models\Triggers;
+use triggers\lib\frameworks\laravel\models\AutomationRules;
 use triggers\lib\frameworks\laravel\models\TriggersActions;
 use triggers\lib\frameworks\laravel\models\TriggersHistory;
 
@@ -44,7 +44,7 @@ class ShellWorker extends BaseShellWorker
 
     protected function registerModels()
     {
-        $this->triggersModel = Triggers::class;
+        $this->automationRulesModel = AutomationRules::class;
         $this->triggersActionsModel = TriggersActions::class;
         $this->triggersHistoryModel = TriggersHistory::class;
     }

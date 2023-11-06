@@ -21,7 +21,7 @@ abstract class BaseShellWorker implements ShellWorkerInterface
     protected $controllers;
 
     /** @var TriggersInterface */
-    protected $triggersModel;
+    protected $automationRulesModel;
 
     /** @var TriggersActionsInterface */
     protected $triggersActionsModel;
@@ -94,7 +94,7 @@ abstract class BaseShellWorker implements ShellWorkerInterface
     {
         $obj = new \stdClass;
 
-        $obj->triggers = $this->triggersModel;
+        $obj->automationRules = $this->automationRulesModel;
         $obj->triggersActions = $this->triggersActionsModel;
         $obj->triggersHistory = $this->triggersHistoryModel;
 

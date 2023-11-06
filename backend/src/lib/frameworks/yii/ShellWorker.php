@@ -5,7 +5,7 @@ namespace triggers\lib\frameworks\yii;
 use triggers\Factory;
 use triggers\images\BaseShellWorker;
 use triggers\lib\BaseRoute;
-use triggers\lib\frameworks\yii\models\Triggers;
+use triggers\lib\frameworks\yii\models\AutomationRules;
 use triggers\lib\frameworks\yii\models\TriggersActions;
 use triggers\lib\frameworks\yii\models\TriggersHistory;
 
@@ -41,7 +41,7 @@ class ShellWorker extends BaseShellWorker
 
     protected function registerModels()
     {
-        $this->triggersModel = Triggers::class;
+        $this->automationRulesModel = AutomationRules::class;
         $this->triggersActionsModel = TriggersActions::class;
         $this->triggersHistoryModel = TriggersHistory::class;
     }

@@ -4,7 +4,7 @@ namespace triggers\lib\frameworks\yii\models;
 
 use backend\models\User;
 use Exception;
-use triggers\models\interfaces\TriggersInterface;
+use triggers\models\interfaces\AutomationRulesInterface;
 
 /**
  * @property int        $id                         [int(11)]
@@ -27,11 +27,11 @@ use triggers\models\interfaces\TriggersInterface;
  * 
  * @property User       $author
  */
-class Triggers extends \yii\db\ActiveRecord implements TriggersInterface
+class AutomationRules extends \yii\db\ActiveRecord implements AutomationRulesInterface
 {
     public static function tableName()
     {
-        return 'triggers';
+        return 'automation_rules';
     }
 
     public function rules()

@@ -4,12 +4,12 @@ namespace triggers\models\interfaces;
 
 /**
  * @property int        $id                         [int(11)]
- * @property string     $name                       [varchar(60)]
+ * @property string     $title                      [varchar(60)]
  * @property string     $description                [text]
  * @property string     $entity_type                [varchar(90)]
- * @property bool       $on_update                  [tinyint(1)]
- * @property bool       $on_create                  [tinyint(1)]
- * @property bool       $on_delete                  [tinyint(1)]
+ * @property bool       $is_update                  [tinyint(1)]
+ * @property bool       $is_create                  [tinyint(1)]
+ * @property bool       $is_delete                  [tinyint(1)]
  * @property bool       $is_active                  [tinyint(1)] 
  * @property string     $additional_settings        [text]
  * @property string     $conditions_settings        [text]
@@ -23,7 +23,7 @@ namespace triggers\models\interfaces;
  * 
  * @property User       $author
  */
-interface TriggersInterface
+interface AutomationRulesInterface
 {
     public function getAuthor();
 

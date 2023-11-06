@@ -10,7 +10,7 @@ use triggers\Factory;
 abstract class BaseServiceAdapter
 {
     /** @var TriggersInterface */
-    public $triggersModel;
+    public $automationRulesModel;
 
     /** @var TriggersActionsInterface */
     protected $triggersActionsModel;
@@ -21,7 +21,7 @@ abstract class BaseServiceAdapter
 
     public function initModels()
     {
-        $this->triggersModel = Factory::$models->triggers;
+        $this->automationRulesModel = Factory::$models->automationRules;
         $this->triggersActionsModel = Factory::$models->triggersActions;
         $this->triggersHistoryModel = Factory::$models->triggersHistory;
     }

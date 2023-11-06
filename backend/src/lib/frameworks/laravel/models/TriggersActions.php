@@ -12,7 +12,7 @@ class TriggersActions extends Model implements TriggersActionsInterface
 {
     use HasFactory, SoftDeletes, CamelCasing;
 
-    public function getTrigger()
+    public function getAutomationRules()
     {
         return null;
     }

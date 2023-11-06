@@ -9,11 +9,11 @@ namespace triggers\models\interfaces;
  * @property string     $settings                   [text]
  * 
  * 
- * @property Triggers   $trigger
+ * @property AutomationRules   $automationRules
  */
 interface TriggersActionsInterface
 {
-    public function getTrigger();
+    public function getAutomationRules();
 
     /**
      * Выполняет логику запуска триггеров с сохранением истории срабатывания

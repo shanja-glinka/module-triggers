@@ -8,7 +8,7 @@ final class Repository extends BaseServiceAdapter
 {
     public function findOneTriggerBy(array $condition)
     {
-        return $this->triggersModel::findOne($condition);
+        return $this->automationRulesModel::findOne($condition);
     }
 
 

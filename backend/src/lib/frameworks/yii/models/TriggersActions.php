@@ -11,7 +11,7 @@ use triggers\models\interfaces\TriggersActionsInterface;
  * @property string     $settings                   [text]
  * 
  * 
- * @property Triggers   $trigger
+ * @property AutomationRules   $automationRules
  */
 class TriggersActions extends \yii\db\ActiveRecord implements TriggersActionsInterface
 {
@@ -29,9 +29,9 @@ class TriggersActions extends \yii\db\ActiveRecord implements TriggersActionsInt
         ];
     }
 
-    public function getTrigger()
+    public function getAutomationRules()
     {
-        return $this->hasOne(Triggers::class, ['id' => 'trigger_id']);
+        return $this->hasOne(AutomationRules::class, ['id' => 'trigger_id']);
     }
 
     public function triggerFinished(bool $isSuccessful, $startedWithData = null)
@@ -39,11 +39,11 @@ class TriggersActions extends \yii\db\ActiveRecord implements TriggersActionsInt
 
         TriggersHistory::setTriggerFinished((int) $this->trigger_id, $isSuccessful, $startedWithData);
 
-        $trigger = $this->triggers;
-        if (!$trigger) {
-            $trigger = $this->getTrigger();
+        $automationRules = $this->automationRules;
+        if (!$automationRules) {
+            $automationRules = $this->getTrigger();
         }
 
-        $trigger->setLastRun($isSuccessful);
+        $automationRules->setLastRun($isSuccessful);
     }
 }

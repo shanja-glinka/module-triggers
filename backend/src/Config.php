@@ -47,4 +47,7 @@ final class Config
     ];
 
     const FRONTEND_VIEW_DIR = __DIR__ . '../../../frontend/dist/sakura-form/';
+
+    const LARAVEL = 'laravel';
+    const YII = 'yii';
 }

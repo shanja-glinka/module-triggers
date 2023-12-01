@@ -3,6 +3,7 @@
 namespace triggers\lib;
 
 use triggers\Factory;
+use triggers\Config;
 use triggers\models\interfaces\TriggersInterface;
 
 final class TriggerEventService
@@ -97,14 +98,14 @@ final class TriggerEventService
         $shellEventData->attributes = null;
 
         switch (Factory::$shellName) {
-            case 'yii':
+            case Config::YII:
                 $sender = $someEvent->sender;
 
                 $shellEventData->tableName = $sender->tableName();
                 $shellEventData->attributes = $sender->toArray();
 
                 return $shellEventData;
-            case 'laravel':
+            case Config::LARAVEL:
                 return null;
             default:
                 return null;

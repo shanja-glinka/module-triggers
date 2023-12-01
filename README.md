@@ -61,6 +61,23 @@
     $triggersFactory::$service::$event
 ```
 
+- Регистрация модуля в Yii
+Для работы контроллеров требуется прописать в конфиги модуль и загрузчик:
+```php
+$config = [
+    ...
+    'bootstrap' => [
+        ...
+        'triggers'
+    ],
+    'modules' => [
+        ...
+        'triggers' => [
+            'class' => 'triggers\lib\frameworks\yii\TriggersModule',
+        ]
+    ]
+]
+
 ## Требущее особое внимание
 
 #### Загрузка оболочек

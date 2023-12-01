@@ -2,6 +2,8 @@
 
 namespace triggers\images;
 
+use RuntimeException;
+
 abstract class ServiceController
 {
     /**
@@ -102,5 +104,22 @@ abstract class ServiceController
         }
 
         return $someData;
+    }
+    
+    protected function getRequest($key = null)
+    {
+        if($key){
+            $arrKeys = explode('.',$key);
+            $result = $this->someRequest;
+            foreach ($arrKeys as $key){
+                if(!empty($result[$key])){
+                    $result = $result[$key];
+                }
+            }
+
+            return  $result;
+        }
+        
+        return $this->someRequest;
     }
 }

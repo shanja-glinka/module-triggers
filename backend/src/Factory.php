@@ -40,6 +40,8 @@ final class Factory implements FactoryInterface
         $this->setMainService();
 
         $this->detectInstance();
+
+        return $this;
     }
 
     private function setConfig()

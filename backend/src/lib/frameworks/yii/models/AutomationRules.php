@@ -31,7 +31,7 @@ class AutomationRules extends \yii\db\ActiveRecord implements AutomationRulesInt
 {
     public static function tableName()
     {
-        return 'automation_rules';
+        return 'trigger_rules';
     }
 
     public function rules()

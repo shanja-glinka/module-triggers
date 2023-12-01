@@ -2,6 +2,7 @@
 
 namespace triggers\lib\frameworks\yii;
 
+use triggers\Config;
 use triggers\Factory;
 use triggers\images\BaseShellWorker;
 use triggers\lib\BaseRoute;
@@ -13,7 +14,7 @@ class ShellWorker extends BaseShellWorker
 {
     protected function setShellName()
     {
-        $this->shellName = 'yii';
+        $this->shellName = Config::YII;
     }
 
     protected function setInstanceNamespace()

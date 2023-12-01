@@ -77,4 +77,12 @@ class BaseRoute implements BaseRouteInterface
         $someService = $reflection->newInstanceArgs([$bodyData, $queryData, $someRequest]);
         return $someService->{$this->method}();
     }
+
+    /**
+     * @return array|string[]
+     */
+    public function getMethods()
+    {
+        return $this->methods = ! empty($this->methods) ? $this->methods : ['post', 'get'];;
+    }
 }

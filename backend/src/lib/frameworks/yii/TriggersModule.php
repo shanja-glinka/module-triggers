@@ -2,7 +2,7 @@
 
 namespace triggers\lib\frameworks\yii;
 
-use triggers\Factory;
+use triggers\Boot;
 use triggers\lib\BaseRoute;
 use yii\base\BootstrapInterface;
 
@@ -19,10 +19,10 @@ class TriggersModule extends \yii\base\Module implements BootstrapInterface
     public function bootstrap($app)
     {
         $rules = [];
-        $triggersFactory = new Factory;
+        $triggersBoot = new Boot;
 
         /** @var BaseRoute */
-        foreach ($triggersFactory::$controllers->getRoutes() as $baseRoute) {
+        foreach ($triggersBoot::$controllers->getRoutes() as $baseRoute) {
             $rules['/' . $baseRoute->getRealRoute()] = '/triggers/interceptor/intercept';
         }
 

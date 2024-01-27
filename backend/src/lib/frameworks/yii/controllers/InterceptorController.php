@@ -2,7 +2,7 @@
 
 namespace triggers\lib\frameworks\yii\controllers;
 
-use triggers\Factory;
+use triggers\Boot;
 use yii\web\Controller;
 
 /**
@@ -27,7 +27,7 @@ class InterceptorController extends Controller
      */
     public function actionIntercept()
     {
-        return Factory::$controllers->call(
+        return Boot::$controllers->call(
             \Yii::$app->request->getPathInfo(),
             \Yii::$app->request->getBodyParams(),
             \Yii::$app->request->getQueryParams()

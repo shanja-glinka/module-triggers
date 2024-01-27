@@ -3,7 +3,7 @@
 namespace triggers\lib\frameworks\yii;
 
 use triggers\Config;
-use triggers\Factory;
+use triggers\Boot;
 use triggers\images\BaseShellWorker;
 use triggers\lib\BaseRoute;
 use triggers\lib\frameworks\yii\models\AutomationRules;
@@ -35,9 +35,9 @@ class ShellWorker extends BaseShellWorker
 
     protected function registerEvents()
     {
-        \yii\base\Event::on(\yii\db\ActiveRecord::class, \yii\db\ActiveRecord::EVENT_AFTER_INSERT, [Factory::$service::$event, 'afterInsert']);
-        \yii\base\Event::on(\yii\db\ActiveRecord::class, \yii\db\ActiveRecord::EVENT_AFTER_UPDATE, [Factory::$service::$event, 'afterUpdate']);
-        \yii\base\Event::on(\yii\db\ActiveRecord::class, \yii\db\ActiveRecord::EVENT_BEFORE_DELETE, [Factory::$service::$event, 'beforeDelete']);
+        \yii\base\Event::on(\yii\db\ActiveRecord::class, \yii\db\ActiveRecord::EVENT_AFTER_INSERT, [Boot::$service::$event, 'afterInsert']);
+        \yii\base\Event::on(\yii\db\ActiveRecord::class, \yii\db\ActiveRecord::EVENT_AFTER_UPDATE, [Boot::$service::$event, 'afterUpdate']);
+        \yii\base\Event::on(\yii\db\ActiveRecord::class, \yii\db\ActiveRecord::EVENT_BEFORE_DELETE, [Boot::$service::$event, 'beforeDelete']);
     }
 
     protected function registerModels()

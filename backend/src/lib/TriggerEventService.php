@@ -2,7 +2,7 @@
 
 namespace triggers\lib;
 
-use triggers\Factory;
+use triggers\Boot;
 use triggers\Config;
 use triggers\models\interfaces\TriggersInterface;
 
@@ -19,7 +19,7 @@ final class TriggerEventService
 
     public function __construct()
     {
-        $this->repository = Factory::$service::$repository;
+        $this->repository = Boot::$service::$repository;
     }
 
 
@@ -80,7 +80,7 @@ final class TriggerEventService
         ]);
 
         if ($triggersModel) {
-            Factory::$service->triggerIt($triggersModel, $eventData->attributes);
+            Boot::$service->triggerIt($triggersModel, $eventData->attributes);
         }
     }
 
@@ -97,7 +97,7 @@ final class TriggerEventService
         $shellEventData->tableName = '';
         $shellEventData->attributes = null;
 
-        switch (Factory::$shellName) {
+        switch (Boot::$shellName) {
             case Config::YII:
                 $sender = $someEvent->sender;
 

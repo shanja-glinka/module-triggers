@@ -3,9 +3,9 @@
 
 require_once 'vendor/autoload.php';
 
-use triggers\Factory;
+use triggers\Boot;
 
 // Для запуска в yii требуется прописать модуль в конфиг src\lib\frameworks\yii\Module.php
-$factory = new Factory();
-var_dump($factory::$controllers->getRouteList());
-// $factory::$controllers->call('index');
+$boot = new Boot();
+var_dump($boot::$controllers->getRouteList());
+// $boot::$controllers->call('index');

@@ -2,7 +2,7 @@
 
 namespace triggers\images;
 
-use triggers\Factory;
+use triggers\Boot;
 
 /**
  * Включает в себя классы моделей
@@ -21,8 +21,8 @@ abstract class BaseServiceAdapter
 
     public function initModels()
     {
-        $this->automationRulesModel = Factory::$models->automationRules;
-        $this->triggersActionsModel = Factory::$models->triggersActions;
-        $this->triggersHistoryModel = Factory::$models->triggersHistory;
+        $this->automationRulesModel = Boot::$models->automationRules;
+        $this->triggersActionsModel = Boot::$models->triggersActions;
+        $this->triggersHistoryModel = Boot::$models->triggersHistory;
     }
 }

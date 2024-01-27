@@ -1,13 +1,14 @@
-## Что на данный момент можно использовать
+# Triggers
+Бизнес требования заключаются в создании одной библиотеки для работы с событиями под управлением Yii2 и Laravel. Модуль призван решить проблемы разности работы глобальных событий и облегчить работу с моделями разных фреймворках
 
 ### Инициалзиация 
 
 ```php
-    $triggersFactory = new \triggers\Factory();
+    $triggersBoot = new \triggers\Boot();
 ```
 
 ## Скрытые обязательные методы инициализирующие работу оболочек
-`{shell}` является оболочкой (фреймворком) который запускается в той среде где установлен пакет
+`{shell}` является оболочкой (фреймворком) который запускается в той среде где установлен пакет (см. `\triggers\Config.php::SHELL_LIST`)
 
 - Регистрация контроллеров. Чтобы использовать роуты требуется зарегистрировать их
 ```bach
@@ -28,41 +29,57 @@
 
 - Получение списка доступных роутов
 ```php
-    $triggersFactory::$controllers->getRouteList();
+    $triggersBoot::$controllers->getRouteList();
 ```
 - Вызов роута 
 ```php
-    $triggersFactory::$controllers->call('triggers/entities/services')
+    $triggersBoot::$controllers->call('triggers/entities/services')
 ```
 - Название вызванной оболочки
 ```php
-    $triggersFactory::$shellName
+    $triggersBoot::$shellName
 ```
 - Модели. Они соответсвуют моделям полученным при загрузке оболочки из `src\lib\frameworks\{shell}\models\`
 
 ```php
-    $triggersFactory::$models->triggers::class
-    $triggersFactory::$models->triggersActions::class
-    $triggersFactory::$models->triggersHistory::class
+    $triggersBoot::$models->triggers::class
+    $triggersBoot::$models->triggersActions::class
+    $triggersBoot::$models->triggersHistory::class
 ```
 
 - Основной обслуживающий сервис
 ```php
-    $triggersFactory::$service
+    $triggersBoot::$service
 ```
 
 - Репозиторий. Является адаптером в использовании моделей фреймворков
 ```php
-    $triggersFactory::$service::$repository
+    $triggersBoot::$service::$repository
 ```
 
 - Сервис отвественный за срабатывание триггеров
 ```php
-    $triggersFactory::$service::$event
+    $triggersBoot::$service::$event
 ```
 
-- Регистрация модуля в Yii
-Для работы контроллеров требуется прописать в конфиги модуль и загрузчик:
+- Регистрация модуля в Laravel
+```php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    ...
+    public function boot()
+    {
+        new \triggers\Boot();
+    }
+    ...
+}
+```
+
+- Регистрация модуля в Yii. Требуется прописать в конфиг модуль и загрузчик:
 ```php
 $config = [
     ...
@@ -76,7 +93,8 @@ $config = [
             'class' => 'triggers\lib\frameworks\yii\TriggersModule',
         ]
     ]
-]
+];
+```
 
 ## Требущее особое внимание
 
@@ -93,4 +111,4 @@ $config = [
 События регистрируются в `src\lib\frameworks\{shell}\ShellWorker.php:registerEvents`. В этом методе требуется установка прослушивателей, либо их регистрация в используемом фреймворке.
 
 #### Работа контроллеров
-Базовая работа контроллера находится в `src\images\BaseController.php`. Оно использует `$triggersFactory::$config::SERVICES_LIST` для создания роутов и их загрузку. В контроллерах требуется создать публичный метод для возможности его вызова. За работу самого контроллера и возможности его вызова отвечате воркер `src\lib\ControllerWorker.php`, доступ к которому можно получить из `Factory::$controllers`.
+Базовая работа контроллера находится в `src\images\BaseController.php`. Оно использует `$triggersBoot::$config::SERVICES_LIST` для создания роутов и их загрузку. В контроллерах требуется создать публичный метод для возможности его вызова. За работу самого контроллера и возможности его вызова отвечате воркер `src\lib\ControllerWorker.php`, доступ к которому можно получить из `Boot::$controllers`.

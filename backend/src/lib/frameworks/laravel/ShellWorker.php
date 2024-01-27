@@ -5,7 +5,7 @@ namespace triggers\lib\frameworks\laravel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use triggers\Config;
-use triggers\Factory;
+use triggers\Boot;
 use triggers\images\BaseShellWorker;
 use triggers\lib\frameworks\laravel\models\AutomationRules;
 use triggers\lib\frameworks\laravel\models\TriggersActions;
@@ -43,13 +43,13 @@ class ShellWorker extends BaseShellWorker
     protected function registerEvents()
     {
         \Illuminate\Support\Facades\Event::listen('eloquent.created: *', function ($event,  $data) {
-            Factory::$service::$event->afterInsert($event);
+            Boot::$service::$event->afterInsert($event);
         });
         \Illuminate\Support\Facades\Event::listen('eloquent.saved: *', function ($event, $data) {
-            Factory::$service::$event->afterUpdate($event);
+            Boot::$service::$event->afterUpdate($event);
         });
         \Illuminate\Support\Facades\Event::listen('eloquent.deleted: *', function ($event, $data) {
-            Factory::$service::$event->beforeDelete($event);
+            Boot::$service::$event->beforeDelete($event);
         });
     }
 

@@ -3,7 +3,7 @@
 namespace triggers\images;
 
 use Exception;
-use triggers\Factory;
+use triggers\Boot;
 
 abstract class ShellLoader
 {
@@ -30,7 +30,7 @@ abstract class ShellLoader
     }
 
     /**
-     * Из Factory::$config::SHELL_LIST создает обьект класса BaseShellWorker
+     * Из Boot::$config::SHELL_LIST создает обьект класса BaseShellWorker
      * в котором проверяется возможность получения оболочки
      * 
      * @return null
@@ -38,13 +38,13 @@ abstract class ShellLoader
     protected function loadFrameWorkShell()
     {
 
-        if (!isset(Factory::$config)) {
+        if (!isset(Boot::$config)) {
             throw new Exception('Не удалось получить конфиг');
         }
 
 
         /** @var BaseShellWorker */
-        foreach (Factory::$config::SHELL_LIST as $shellWorker) {
+        foreach (Boot::$config::SHELL_LIST as $shellWorker) {
             $shellWorker = new $shellWorker;
             if ($shellWorker->isShellExists()) {
                 $this->setShell($shellWorker);
@@ -56,7 +56,7 @@ abstract class ShellLoader
     }
 
     /**
-     * Происходит преобразование оболочки в модуль для Factory::$module
+     * Происходит преобразование оболочки в модуль для Boot::$module
      * регистрации в требуемом фреймворке
      * 
      * 

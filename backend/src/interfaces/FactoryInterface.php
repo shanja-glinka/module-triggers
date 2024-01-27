@@ -5,6 +5,6 @@ namespace triggers\interfaces;
 /**
  * Undocumented interface
  */
-interface FactoryInterface
+interface BootInterface
 {
 }

@@ -2,13 +2,13 @@
 
 namespace triggers;
 
-use triggers\interfaces\FactoryInterface;
+use triggers\interfaces\BootInterface;
 use triggers\lib\ControllerWorker;
 use triggers\lib\ModuleWorker;
 use triggers\lib\TriggerEventService;
 use triggers\lib\TriggerService;
 
-final class Factory implements FactoryInterface
+final class Boot implements BootInterface
 {
 
     /** @var Config */

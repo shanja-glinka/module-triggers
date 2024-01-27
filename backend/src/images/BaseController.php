@@ -3,7 +3,7 @@
 namespace triggers\images;
 
 use Exception;
-use triggers\Factory;
+use triggers\Boot;
 use triggers\lib\BaseRoute;
 
 abstract class BaseController
@@ -51,7 +51,7 @@ abstract class BaseController
     {
         $this->routesList = [];
 
-        foreach (Factory::$config::ROUTES_LIST as $baseRoute => $serviceClass) {
+        foreach (Boot::$config::ROUTES_LIST as $baseRoute => $serviceClass) {
             $this->createRoutes($baseRoute, $serviceClass);
         }
     }
